@@ -1,5 +1,5 @@
 <?php
-require_once 'lib/anexgrid.php';
+require_once 'anexgrid.php';
 
 try
 {
