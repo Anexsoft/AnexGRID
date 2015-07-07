@@ -1,3 +1,12 @@
+/*
+    jQuery AnexGRID 1.0.0
+    
+    Plugin desarrollado en jQuery y en español que permite paginar, ordenar y/o filtrar registros para los proyectos que usen Bootstrap 3.
+    
+    Desarrollador: Eduardo Rodríguez
+    Website: http://anexsoft.com
+*/
+
 $.fn.anexGrid = function (config) {
     /* Lenguaje */
     var lang = {
@@ -14,6 +23,7 @@ $.fn.anexGrid = function (config) {
         registro: 'registro',
         registros_mostrando: 'Por página:',
         encontrados: 'encontrados',
+        no_encontrados: 'Sin registros que mostrar',
         cargando: '.. cargando ..',
     }
 
@@ -142,6 +152,10 @@ $.fn.anexGrid = function (config) {
                     cargarData();
                 },
                 error: function(jqXHR, textStatus, errorThrown){
+                    paginadorBloqueaControles(false);
+                    filtroBloqueaControles(false);
+                    ordenarBloqueaControles(false);
+                    
                     tbody.html('<tr class="danger"><td colspan="' + anexGrid.columnas.length + '" class="danger text-center">' + lang.error_cargando + '</td></tr>');
                     console.log(errorThrown + ' | ' + textStatus);
                 }   
@@ -440,6 +454,11 @@ $.fn.anexGrid = function (config) {
 
     function cargarData()
     {
+        if(anexGrid.data.length == 0)
+        {
+            anexGrid.tabla.find('.' + clase.filas).html('<tr><td colspan="' + anexGrid.columnas.length + '" class="text-center">' + lang.no_encontrados + '</td></tr>');
+        }
+        
         $(anexGrid.data).each(function(i, f)
         {
             /* Creamos la fila */
@@ -681,6 +700,7 @@ $.fn.anexGrid = function (config) {
         },
         refrescar: function()
         {
+            anexGrid.pagina = 1;
             return anexGrid.cargarData();
         },
         parametros: function(param)
