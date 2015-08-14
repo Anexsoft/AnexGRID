@@ -4,7 +4,7 @@ By Anexsoft
 Web oficial:
 http://anexsoft.com/anexgrid/
 
-<h2Cambios</h2>
+<h2>Cambios</h2>
 
 <h3>Jueves 13 de agosto, 2015:</h3>
 <ol>
