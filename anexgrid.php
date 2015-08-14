@@ -8,9 +8,6 @@ class AnexGrid
     public $filtros = array();
     public $parametros = array();
     
-    public $data = array();
-    public $total = 0;
-    
     public function __CONSTRUCT()
     {
         /* Cantidad de registros por página */

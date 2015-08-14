@@ -15,7 +15,7 @@ $.fn.anexGrid = function (config) {
         paginas: 'páginas',
         pagina: 'página',
         primera_pagina: 'Primera página',
-        ultima_página: 'Página final',
+        ultima_pagina: 'Página final',
         anterior_pagina: 'Página anterior',
         siguiente_pagina: 'Página siguiente',
         registro_encontrados: 'Se han encontrado {t} {r}',
@@ -24,8 +24,8 @@ $.fn.anexGrid = function (config) {
         registros_mostrando: 'Por página:',
         encontrados: 'encontrados',
         no_encontrados: 'Sin registros que mostrar',
-        cargando: '.. cargando ..',
-    }
+        cargando: '.. cargando ..'
+    };
 
     /* Variables de apoyo */
     var id = 'anexgrid-' + this.attr('id').replace('#', '');
@@ -129,12 +129,9 @@ $.fn.anexGrid = function (config) {
                 pagina: anexGrid.pagina,
                 columna: anexGrid.columna,
                 columna_orden: anexGrid.columna_orden,
-                filtros: anexGrid.filtros
+                filtros: anexGrid.filtros,
+                parametros: anexGrid.parametros
             };
-
-            for (key in anexGrid.parametros) {
-                parametros[key] = anexGrid.parametros[key];
-            }
             
             /* Peticion AJAX al servidor */
             $.ajax({
@@ -528,7 +525,7 @@ $.fn.anexGrid = function (config) {
             }
 
             /* Control de paginador */
-            var controlPaginacion = '<div class="col-xs-6 text-center"><i title="' + lang.primera_pagina + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-backward ' + clase.paginador_primero + '"></i><i title="' + lang.anterior_pagina + '" style="font-size:0.8em;margin-right:4px;cursor:pointer;" class="glyphicon glyphicon-backward ' + clase.paginador_anterior + '"></i> ' + primeraLetraAMayuscula(lang.pagina) + ' <input class="text-center form-control input-sm ' + clase.paginador_pagina_actual + '" type="text" value="' + anexGrid.pagina + '" style="width:50px;display:inline-block;" /> / <b class="' + clase.paginador_paginas + '">' + anexGrid.paginas + '</b> <i title="' + lang.siguiente_pagina + '" style="font-size:0.8em;margin-left:4px;cursor:pointer;" class="glyphicon glyphicon-forward ' + clase.paginador_siguiente + '"></i><i title="' + lang.ultima_página + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-forward ' + clase.paginador_final + '"></i></div>';
+            var controlPaginacion = '<div class="col-xs-6 text-center"><i title="' + lang.primera_pagina + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-backward ' + clase.paginador_primero + '"></i><i title="' + lang.anterior_pagina + '" style="font-size:0.8em;margin-right:4px;cursor:pointer;" class="glyphicon glyphicon-backward ' + clase.paginador_anterior + '"></i> ' + primeraLetraAMayuscula(lang.pagina) + ' <input class="text-center form-control input-sm ' + clase.paginador_pagina_actual + '" type="text" value="' + anexGrid.pagina + '" style="width:50px;display:inline-block;" /> / <b class="' + clase.paginador_paginas + '">' + anexGrid.paginas + '</b> <i title="' + lang.siguiente_pagina + '" style="font-size:0.8em;margin-left:4px;cursor:pointer;" class="glyphicon glyphicon-forward ' + clase.paginador_siguiente + '"></i><i title="' + lang.ultima_pagina + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-forward ' + clase.paginador_final + '"></i></div>';
 
             /* Registros encontrados */
             var registrosEncontrados = '<div class="col-xs-3 text-right ' + clase.paginador_registros_encontrados + '">' + paginadorRegistrosPorPagina() + '</div>';
