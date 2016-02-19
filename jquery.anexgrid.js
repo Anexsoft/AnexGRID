@@ -9,24 +9,24 @@
 
 $.fn.anexGrid = function (config) {
     'use strict';
-    /* Lenguaje */
-    config.lang = config.lang !== undefined ? config.lang : {};
-    var lang = {
-        error_cargando: reemplazaUndefinedPor(config.lang.error_cargando, 'Ocurrio un error al cargar la data.'),
-        filtro_limpiar: reemplazaUndefinedPor(config.lang.filtro_limpiar, 'Retirar filtro'),
-        paginas: reemplazaUndefinedPor(config.lang.paginas, 'páginas'),
-        pagina: reemplazaUndefinedPor(config.lang.pagina, 'páginas'),
-        primera_pagina: reemplazaUndefinedPor(config.lang.primera_pagina, 'Primera página'),
-        ultima_pagina: reemplazaUndefinedPor(config.lang.ultima_pagina, 'Página final'),
-        anterior_pagina: reemplazaUndefinedPor(config.lang.anterior_pagina, 'Página anterior'),
-        siguiente_pagina: reemplazaUndefinedPor(config.lang.anterior_pagina, 'Página siguiente'),
-        registro_encontrados: reemplazaUndefinedPor(config.lang.anterior_pagina, 'Se han encontrado {t} {r}'),
-        registros: reemplazaUndefinedPor(config.lang.registros, 'registros'),
-        registro: reemplazaUndefinedPor(config.lang.registro, 'registro'),
-        registros_mostrando: reemplazaUndefinedPor(config.lang.registros_mostrando, 'Por página:'),
-        encontrados: reemplazaUndefinedPor(config.lang.encontrados, 'encontrados'),
-        sin_registros: reemplazaUndefinedPor(config.lang.encontrados, 'Sin registros que mostrar'),
-        cargando: reemplazaUndefinedPor(config.lang.cargando, '.. cargando ..'),
+    /* Texto de la grilla */
+    config.texto = config.texto !== undefined ? config.texto : {};
+    var texto = {
+        error_cargando: reemplazaUndefinedPor(config.texto.error_cargando, 'Ocurrio un error al cargar la data.'),
+        filtro_limpiar: reemplazaUndefinedPor(config.texto.filtro_limpiar, 'Retirar filtro'),
+        paginas: reemplazaUndefinedPor(config.texto.paginas, 'páginas'),
+        pagina: reemplazaUndefinedPor(config.texto.pagina, 'páginas'),
+        primera_pagina: reemplazaUndefinedPor(config.texto.primera_pagina, 'Primera página'),
+        ultima_pagina: reemplazaUndefinedPor(config.texto.ultima_pagina, 'Página final'),
+        anterior_pagina: reemplazaUndefinedPor(config.texto.anterior_pagina, 'Página anterior'),
+        siguiente_pagina: reemplazaUndefinedPor(config.texto.anterior_pagina, 'Página siguiente'),
+        registro_encontrados: reemplazaUndefinedPor(config.texto.anterior_pagina, 'Se han encontrado {t} {r}'),
+        registros: reemplazaUndefinedPor(config.texto.registros, 'registros'),
+        registro: reemplazaUndefinedPor(config.texto.registro, 'registro'),
+        registros_mostrando: reemplazaUndefinedPor(config.texto.registros_mostrando, 'Por página:'),
+        encontrados: reemplazaUndefinedPor(config.texto.encontrados, 'encontrados'),
+        sin_registros: reemplazaUndefinedPor(config.texto.encontrados, 'Sin registros que mostrar'),
+        cargando: reemplazaUndefinedPor(config.texto.cargando, '.. cargando ..'),
     };
 
     /* Variables de apoyo */
@@ -161,7 +161,7 @@ $.fn.anexGrid = function (config) {
                     filtroBloqueaControles(false);
                     ordenarBloqueaControles(false);
 
-                    tbody.html('<tr class="danger"><td colspan="' + anexGrid.columnas.length + '" class="danger text-center">' + lang.error_cargando + '</td></tr>');
+                    tbody.html('<tr class="danger"><td colspan="' + anexGrid.columnas.length + '" class="danger text-center">' + texto.error_cargando + '</td></tr>');
                     console.log(errorThrown + ' | ' + textStatus);
                 }
             })
@@ -431,7 +431,7 @@ $.fn.anexGrid = function (config) {
                             .addClass(clase.filtro_control);
 
                         /* Agregamos el control al grupo */
-                        var inputGroup = $('<div class="input-group"><div class="' + clase.filtro_control_container + '"></div><span class="input-group-btn"><button title="' + lang.filtro_limpiar + '" class="btn btn-default btn-sm ' + clase.filtro_limpiar + '" type="button">Go!</button></span>');
+                        var inputGroup = $('<div class="input-group"><div class="' + clase.filtro_control_container + '"></div><span class="input-group-btn"><button title="' + texto.filtro_limpiar + '" class="btn btn-default btn-sm ' + clase.filtro_limpiar + '" type="button">Go!</button></span>');
 
                         var icono = '<i class="glyphicon glyphicon-remove"></i>';
 
@@ -450,7 +450,7 @@ $.fn.anexGrid = function (config) {
 
     function cargarData() {
         if (anexGrid.data.length === 0) {
-            anexGrid.tabla.find('.' + clase.filas).html('<tr><td colspan="' + anexGrid.columnas.length + '" class="text-center">' + lang.sin_registros + '</td></tr>');
+            anexGrid.tabla.find('.' + clase.filas).html('<tr><td colspan="' + anexGrid.columnas.length + '" class="text-center">' + texto.sin_registros + '</td></tr>');
         }
 
         var tbody = anexGrid.tabla.find('.' + clase.filas);
@@ -516,13 +516,13 @@ $.fn.anexGrid = function (config) {
                     var registrosPorPagina = '';
 
                     if (typeof anexGrid.limite != 'number') {
-                        registrosPorPagina = '<div class="col-xs-3">' + lang.registros_mostrando + ' <select style="width:80px;display:inline-block;" class="form-control input-sm ' + clase.paginador_paginas_por_pagina + '">' + paginadorPaginasAMostrar() + '</select></div>';
+                        registrosPorPagina = '<div class="col-xs-3">' + texto.registros_mostrando + ' <select style="width:80px;display:inline-block;" class="form-control input-sm ' + clase.paginador_paginas_por_pagina + '">' + paginadorPaginasAMostrar() + '</select></div>';
                     } else {
-                        registrosPorPagina = '<div class="col-xs-3">' + lang.registros_mostrando + ' ' + anexGrid.porPagina + ' ' + lang.registros + '</div>';
+                        registrosPorPagina = '<div class="col-xs-3">' + texto.registros_mostrando + ' ' + anexGrid.porPagina + ' ' + texto.registros + '</div>';
                     }
 
                     /* Control de paginador */
-                    var controlPaginacion = '<div class="col-xs-6 text-center"><i title="' + lang.primera_pagina + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-backward ' + clase.paginador_primero + '"></i><i title="' + lang.anterior_pagina + '" style="font-size:0.8em;margin-right:4px;cursor:pointer;" class="glyphicon glyphicon-backward ' + clase.paginador_anterior + '"></i> ' + primeraLetraAMayuscula(lang.pagina) + ' <input class="text-center form-control input-sm ' + clase.paginador_pagina_actual + '" type="text" value="' + anexGrid.pagina + '" style="width:50px;display:inline-block;" /> / <b class="' + clase.paginador_paginas + '">' + anexGrid.paginas + '</b> <i title="' + lang.siguiente_pagina + '" style="font-size:0.8em;margin-left:4px;cursor:pointer;" class="glyphicon glyphicon-forward ' + clase.paginador_siguiente + '"></i><i title="' + lang.ultima_pagina + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-forward ' + clase.paginador_final + '"></i></div>';
+                    var controlPaginacion = '<div class="col-xs-6 text-center"><i title="' + texto.primera_pagina + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-backward ' + clase.paginador_primero + '"></i><i title="' + texto.anterior_pagina + '" style="font-size:0.8em;margin-right:4px;cursor:pointer;" class="glyphicon glyphicon-backward ' + clase.paginador_anterior + '"></i> ' + primeraLetraAMayuscula(texto.pagina) + ' <input class="text-center form-control input-sm ' + clase.paginador_pagina_actual + '" type="text" value="' + anexGrid.pagina + '" style="width:50px;display:inline-block;" /> / <b class="' + clase.paginador_paginas + '">' + anexGrid.paginas + '</b> <i title="' + texto.siguiente_pagina + '" style="font-size:0.8em;margin-left:4px;cursor:pointer;" class="glyphicon glyphicon-forward ' + clase.paginador_siguiente + '"></i><i title="' + texto.ultima_pagina + '" style="font-size:0.8em;cursor:pointer;" class="glyphicon glyphicon-step-forward ' + clase.paginador_final + '"></i></div>';
 
                     /* Registros encontrados */
                     var registrosEncontrados = '<div class="col-xs-3 text-right ' + clase.paginador_registros_encontrados + '">' + paginadorRegistrosPorPagina() + '</div>';
@@ -644,7 +644,7 @@ $.fn.anexGrid = function (config) {
     }
 
     function paginadorRegistrosPorPagina() {
-        return lang.registro_encontrados.replace('{t}', anexGrid.total).replace('{r}', anexGrid.total == 0 || anexGrid.total > 1 ? lang.registros : lang.registro);
+        return texto.registro_encontrados.replace('{t}', anexGrid.total).replace('{r}', anexGrid.total == 0 || anexGrid.total > 1 ? texto.registros : texto.registro);
     }
 
     function paginadorPaginasAMostrar() {
