@@ -1,11 +1,11 @@
 /*
-    jQuery AnexGRID 1.0.1
-    
-    Plugin desarrollado en jQuery y en español que permite paginar, ordenar y/o filtrar registros para los proyectos que usen Bootstrap 3.
-    
-    Desarrollador: Eduardo Rodríguez
-    Website: http://anexsoft.com/anexgrid
-*/
+            jQuery AnexGRID 1.0.1
+            
+            Plugin desarrollado en jQuery y en español que permite paginar, ordenar y/o filtrar registros para los proyectos que usen Bootstrap 3.
+            
+            Desarrollador: Eduardo Rodríguez
+            Website: http://anexsoft.com/anexgrid
+        */
 
 $.fn.anexGrid = function (config) {
     'use strict';
