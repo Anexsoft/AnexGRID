@@ -114,7 +114,7 @@ $.fn.anexGrid = function (config) {
         /* Eventos para configurar la grilla */
         creaGrilla: function () {
             /* Creamos la grilla */
-            anexGrid.tabla = $('<table id="' + id + '" style="' + anexGrid.style + '" class="table ' + anexGrid.class + '"><thead class="' + clase.columnas + '"><tr></tr></thead><tbody class="' + clase.filas + '"></tbody><tfoot class="hidden-xs hidden-sm ' + clase.paginador + '"></tfoot></table>');
+            anexGrid.tabla = $('<table id="' + id + '" style="' + anexGrid.style + '" class="table ' + anexGrid.class + '"><thead class="' + clase.columnas + '"><tr></tr></thead><tbody class="' + clase.filas + '"></tbody><tfoot class="' + clase.paginador + '"></tfoot></table>');
 
             /* Registros por página */
             anexGrid.porPagina = typeof anexGrid.limite == 'number' ? anexGrid.limite : anexGrid.limite[0];
